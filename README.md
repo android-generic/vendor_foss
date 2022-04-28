@@ -1,5 +1,5 @@
 # vendor_foss
-A set of FOSS applications to include in an AOSP
+A set of FOSS applications to include in an AOSP, now with new list of apps provided by HMTheBoy154.
 
 *with added options and features*
 
@@ -36,18 +36,10 @@ Then add this inherit to your device tree:
 
 #### From F-Droid Repo:
 
-- Calendar - ws.xsoh.etar
 - Aurora App Store - com.aurora.store
 - Aurora Fdroid - com.aurora.adroid
 - Calendar/Contacts sync - com.etesync.syncadapter
-- Fake assistant that uses duckduckgo - co.pxhouse.sas
-- Gallery App - com.simplemobiletools.gallery.pro
-- fdroid extension - org.fdroid.fdroid.privileged
-- Alarmio - me.jfenn.alarmio
-- Mozilla Nlp - org.microg.nlp.backend.ichnaea
-- Nominatim Nlp - org.microg.nlp.backend.nominatim
-- NewPipe - org.schabi.newpipe
-- Midori Browser - org.midorinext.android
+- LocalGsmNlpBackend - org.fitchfamily.android.gsmlocation
 
 #### From MicroG Repo:
 
@@ -55,11 +47,7 @@ Then add this inherit to your device tree:
 - MicroG GSF - com.google.android.gsf
 - MicroG FakeStore - com.android.vending
 - MicroG DroidGuard - org.microg.gms.droidguard 
- 
-#### From NanoLX Repo:
- 
-- MVP Video Player - is.xyz.mpv
 
 ### Notes
 
-- For microG, this [commit](https://github.com/microg/android_packages_apps_GmsCore/pull/957) is needed
+- For microG, **Singature Spoofing is required**, If your builds don't have it yet look around  [microG repo](https://github.com/microg/GmsCore) for the Signature Spoofing patches. (`patches` dir or Pull Requests)
