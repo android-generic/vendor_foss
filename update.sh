@@ -275,7 +275,7 @@ echo -e "${YELLOW}# grabbing Arora and F-Droid Apps${NC}"
 
 if [ $2 == "bromite" ]; then
 downloadFromRepo "$bromite" "$bromite_dir" org.bromite.bromite "Browser2 QuickSearchBox Jelly"
-downloadFromRepo "$bromite" "$bromite_dir" org.android.webview "WebView"
+downloadFromRepo "$bromite" "$bromite_dir" org.bromite.webview "WebView"
 fi
 
 #~ downloadFromRepo "$unofficial_mozilla" "$unofficial_mozilla_dir" org.mozilla.firefox "Browser2 QuickSearchBox Jelly"
