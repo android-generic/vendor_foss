@@ -275,7 +275,7 @@ echo -e "${YELLOW}# grabbing Arora and F-Droid Apps${NC}"
 
 if [ $2 == "bromite" ]; then
 downloadFromRepo "$bromite" "$bromite_dir" org.bromite.bromite "Browser2 QuickSearchBox Jelly"
-downloadFromRepo "$bromite" "$bromite_dir" com.android.webview "WebView"
+downloadFromRepo "$bromite" "$bromite_dir" org.android.webview "WebView"
 fi
 
 #~ downloadFromRepo "$unofficial_mozilla" "$unofficial_mozilla_dir" org.mozilla.firefox "Browser2 QuickSearchBox Jelly"
@@ -305,40 +305,38 @@ downloadFromFdroid com.aurora.adroid
 downloadFromFdroid org.fdroid.fdroid.privileged
 #Phonograph
 #~ downloadFromFdroid com.kabouzeid.gramophone "Eleven"
-#Mozilla Nlp
-downloadFromFdroid org.microg.nlp.backend.ichnaea
-#Nominatim Nlp
-downloadFromFdroid org.microg.nlp.backend.nominatim
+#LocalGsmNlpBackend
+downloadFromFdroid org.fitchfamily.android.gsmlocation
 # EtchDroid USB Writer
 #~ downloadFromFdroid eu.depau.etchdroid
 
-if [ $2 == "extras" ]; then
+#if [ $2 == "extras" ]; then
 #Calendar
-downloadFromFdroid ws.xsoh.etar "Calendar"
+#downloadFromFdroid ws.xsoh.etar "Calendar"
 #Fake assistant that research on duckduckgo
-downloadFromFdroid co.pxhouse.sas
+#downloadFromFdroid co.pxhouse.sas
 # Gallery App
-downloadFromFdroid com.simplemobiletools.gallery.pro "Photos Gallery Gallery2"
+#downloadFromFdroid com.simplemobiletools.gallery.pro "Photos Gallery Gallery2"
 #Alarmio
- downloadFromFdroid me.jfenn.alarmio "GoogleClock DeskClock"
+# downloadFromFdroid me.jfenn.alarmio "GoogleClock DeskClock"
 # NewPipe (outdated)
-downloadFromFdroid org.schabi.newpipe
+#downloadFromFdroid org.schabi.newpipe
 
-echo -e "${YELLOW}# grabbing NanoLX Apps${NC}"
-downloadFromRepo "$nanolx" "$nanolx_dir" is.xyz.mpv
-fi
+#echo -e "${YELLOW}# grabbing NanoLX Apps${NC}"
+#downloadFromRepo "$nanolx" "$nanolx_dir" is.xyz.mpv
+#fi
 
-if [ $2 == "astian" ]; then
+#if [ $2 == "astian" ]; then
 #  Astian Apps
 # Midori Browser
-downloadFromFdroid org.midorinext.android "Browser2 QuickSearchBox Jelly"
+#downloadFromFdroid org.midorinext.android "Browser2 QuickSearchBox Jelly"
 # Astian Spika
 # downloadFromFdroid org.astianspika.android
 # Astian Cloud
 # downloadFromFdroid org.astiancloud.android
 # Astian VPN
 # downloadFromFdroid org.astianvpn.android
-fi
+#fi
 
 #~ downloadFromFdroid de.grobox.liberario
 #Ciphered Instant Messaging
