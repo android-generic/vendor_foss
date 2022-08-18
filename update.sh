@@ -176,7 +176,7 @@ downloadFromFdroid() {
 			
 		done
 		echo -e "${Yellow}# Total mirrors: ${#array[@]} ${NC}"
-		if [ "$failed_count" >= 1 ]; then
+		if [ "$failed_count" -ge "1" ]; then
 			echo -e "${RED}# Failed $failed_count mirrors ${NC}"
 		fi
 		if [ "$failed_count" == "${#array[@]}" ]; then
@@ -273,7 +273,7 @@ echo -e "${YELLOW}# grabbing Arora and F-Droid Apps${NC}"
 #Web browser
 #~ downloadFromFdroid org.mozilla.fennec_fdroid "Browser2 QuickSearchBox Jelly"
 
-if [ $2 == "bromite" ]; then
+if [ "$2" == "bromite" ]; then
 downloadFromRepo "$bromite" "$bromite_dir" org.bromite.bromite "Browser2 QuickSearchBox Jelly"
 downloadFromRepo "$bromite" "$bromite_dir" org.bromite.webview "WebView"
 fi
