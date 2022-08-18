@@ -297,8 +297,8 @@ downloadFromFdroid com.aurora.store
 downloadFromFdroid com.etesync.syncadapter
 # Todo lists
 #~ downloadFromFdroid org.tasks
-# Aurora Fdroid
-downloadFromFdroid com.aurora.adroid
+# Droid-ify
+downloadFromFdroid com.looker.droidify
 # F-Droid App Store
 #~ downloadFromFdroid org.fdroid.fdroid
 #fdroid extension
