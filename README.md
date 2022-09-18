@@ -40,6 +40,7 @@ Then add this inherit to your device tree:
 - Neo-Store - com.machiav3lli.fdroid
 - Calendar/Contacts sync - com.etesync.syncadapter
 - LocalGsmNlpBackend - org.fitchfamily.android.gsmlocation
+- Talkback - com.android.talkback
 
 #### From MicroG Repo:
 

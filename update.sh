@@ -347,6 +347,8 @@ downloadFromFdroid org.fitchfamily.android.gsmlocation
 #~ downloadFromFdroid org.mariotaku.twidere
 #~ downloadFromFdroid com.pitchedapps.frost
 #~ downloadFromFdroid com.keylesspalace.tusky
+#Talkback
+downloadFromFdroid com.android.talkback
 
 echo -e "${YELLOW}# grabbing MicroG Apps${NC}"
 downloadFromRepo "$microg" "$microg_dir" com.google.android.gms
