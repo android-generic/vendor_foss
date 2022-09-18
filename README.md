@@ -37,7 +37,7 @@ Then add this inherit to your device tree:
 #### From F-Droid Repo:
 
 - Aurora App Store - com.aurora.store
-- Droid-ify - com.looker.droidify
+- Neo-Store - com.machiav3lli.fdroid
 - Calendar/Contacts sync - com.etesync.syncadapter
 - LocalGsmNlpBackend - org.fitchfamily.android.gsmlocation
 

@@ -298,7 +298,7 @@ downloadFromFdroid com.etesync.syncadapter
 # Todo lists
 #~ downloadFromFdroid org.tasks
 # Droid-ify
-downloadFromFdroid com.looker.droidify
+downloadFromFdroid com.machiav3lli.fdroid
 # F-Droid App Store
 #~ downloadFromFdroid org.fdroid.fdroid
 #fdroid extension
