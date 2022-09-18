@@ -274,8 +274,8 @@ echo -e "${YELLOW}# grabbing Arora and F-Droid Apps${NC}"
 #~ downloadFromFdroid org.mozilla.fennec_fdroid "Browser2 QuickSearchBox Jelly"
 
 if [ "$2" == "bromite" ]; then
-downloadFromRepo "$bromite" "$bromite_dir" org.bromite.bromite "Browser2 QuickSearchBox Jelly"
-downloadFromRepo "$bromite" "$bromite_dir" org.bromite.webview "WebView"
+#downloadFromRepo "$bromite" "$bromite_dir" org.bromite.bromite "Browser2 QuickSearchBox Jelly"
+downloadFromRepo "$bromite" "$bromite_dir" org.bromite.webview
 fi
 
 #~ downloadFromRepo "$unofficial_mozilla" "$unofficial_mozilla_dir" org.mozilla.firefox "Browser2 QuickSearchBox Jelly"

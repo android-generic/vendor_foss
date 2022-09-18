@@ -42,6 +42,9 @@ Then add this inherit to your device tree:
 - LocalGsmNlpBackend - org.fitchfamily.android.gsmlocation
 - Talkback - com.android.talkback
 
+#### From Bromite Repo (if enabled):
+- Bromite SystemWebView - org.bromite.webview
+
 #### From MicroG Repo:
 
 - MicroG GMS - com.google.android.gms
