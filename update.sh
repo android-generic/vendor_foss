@@ -294,7 +294,7 @@ downloadFromFdroid com.aurora.store
 #Mail client
 #~ downloadFromFdroid com.fsck.k9 "Email"
 #Calendar/Contacts sync
-downloadFromFdroid com.etesync.syncadapter
+downloadFromFdroid at.bitfire.davdroid
 # Todo lists
 #~ downloadFromFdroid org.tasks
 # Droid-ify
@@ -349,6 +349,7 @@ downloadFromFdroid org.fitchfamily.android.gsmlocation
 #~ downloadFromFdroid com.keylesspalace.tusky
 #Talkback
 downloadFromFdroid com.android.talkback
+downloadFromFdroid com.reecedunn.espeak
 
 echo -e "${YELLOW}# grabbing MicroG Apps${NC}"
 downloadFromRepo "$microg" "$microg_dir" com.google.android.gms

@@ -38,9 +38,10 @@ Then add this inherit to your device tree:
 
 - Aurora App Store - com.aurora.store
 - Neo-Store - com.machiav3lli.fdroid
-- Calendar/Contacts sync - com.etesync.syncadapter
+- DAVx⁵ - at.bitfire.davdroid
 - LocalGsmNlpBackend - org.fitchfamily.android.gsmlocation
 - Talkback - com.android.talkback
+- eSpeak - com.reecedunn.espeak
 
 #### From Bromite Repo (if enabled):
 - Bromite SystemWebView - org.bromite.webview
