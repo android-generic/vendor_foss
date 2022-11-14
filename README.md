@@ -25,7 +25,7 @@ A set of FOSS applications to include in an AOSP, now with new list of apps prov
 To include the FOSS apps into your device specific builds. Please clone 
 this repo into vendor/foss:
 
-	$ git clone https://github.com/BlissRoms-x86/vendor_foss vendor/foss
+	$ git clone https://github.com/supremegamers/vendor_foss vendor/foss
 	
 Then add this inherit to your device tree:
 
@@ -56,4 +56,4 @@ Then add this inherit to your device tree:
 ### Notes
 
 - For microG, **Singature Spoofing is required**, If your builds don't have it yet look around  [microG repo](https://github.com/microg/GmsCore) for the Signature Spoofing patches. (`patches` dir or Pull Requests)
-- For Brommite SystemWebview, **please remember to add it into config_webview_packages.xml alongside with the signature**. You can visit [Bromite's Installing SystemWebView](https://github.com/bromite/bromite/wiki/Installing-SystemWebView) for more info.
+- For Bromite SystemWebview, **please remember to add it into config_webview_packages.xml alongside with the signature**. You can visit [Bromite's Installing SystemWebView](https://github.com/bromite/bromite/wiki/Installing-SystemWebView) for more info.
