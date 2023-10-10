@@ -22,6 +22,9 @@ repo11="https://mirror.kumi.systems/fdroid/repo/"
 repo12="https://ftp.lysator.liu.se/pub/fdroid/repo/"
 repo13="https://mirror.librelabucm.org/fdroid/repo/"
 
+collabora="https://www.collaboraoffice.com/downloads/fdroid/repo"
+collabora_dir="tmp/collabora"
+
 microg="https://microg.org/fdroid/repo"
 microg_dir="tmp/microg"
 
@@ -276,6 +279,11 @@ echo -e "${YELLOW}# grabbing Arora and F-Droid Apps${NC}"
 if [ "$2" == "bromite" ]; then
 #downloadFromRepo "$bromite" "$bromite_dir" org.bromite.bromite "Browser2 QuickSearchBox Jelly"
 downloadFromRepo "$bromite" "$bromite_dir" org.bromite.webview
+fi
+
+if [ "$MAIN_ARCH" == "arm64-v8a" ]; then
+	# Collabora LibreOffice
+	downloadFromRepo "$collabora" "$collabora_dir" com.collabora.libreoffice
 fi
 
 #~ downloadFromRepo "$unofficial_mozilla" "$unofficial_mozilla_dir" org.mozilla.firefox "Browser2 QuickSearchBox Jelly"
