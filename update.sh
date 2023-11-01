@@ -366,7 +366,7 @@ echo -e "${YELLOW}# grabbing MicroG Apps${NC}"
 downloadFromRepo "$microg" "$microg_dir" com.google.android.gms
 downloadFromRepo "$microg" "$microg_dir" com.google.android.gsf
 downloadFromRepo "$microg" "$microg_dir" com.android.vending "Google Play Store"
-downloadFromRepo "$microg" "$microg_dir" org.microg.gms.droidguard
+# downloadFromRepo "$microg" "$microg_dir" org.microg.gms.droidguard
 
 #~ echo -e "${YELLOW}# grabbing NewPipe ${NC}"
 #~ downloadFromRepo "$newpipe" "$newpipe_dir" org.schabi.newpip
