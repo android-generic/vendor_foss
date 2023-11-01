@@ -360,7 +360,7 @@ downloadFromFdroid com.android.talkback
 downloadFromFdroid com.reecedunn.espeak
 
 # XScreensavers: org.jwz.xscreensaver
-downloadFromFdroid org.jwz.xscreensaver
+# downloadFromFdroid org.jwz.xscreensaver
 
 echo -e "${YELLOW}# grabbing MicroG Apps${NC}"
 downloadFromRepo "$microg" "$microg_dir" com.google.android.gms
