@@ -145,7 +145,8 @@ cat > Android.mk <<EOF
 LOCAL_PATH := \$(my-dir)
 
 EOF
-echo -e 'PRODUCT_PACKAGES += \\' > apps.mk
+echo -e 'ifneq ("$(USE_MINIMAL_FOSS_APPS)","true")' > apps.mk
+echo -e 'PRODUCT_PACKAGES += \\' >> apps.mk
 
 mkdir -p bin
 
@@ -359,6 +360,12 @@ downloadFromFdroid org.fitchfamily.android.gsmlocation
 downloadFromFdroid com.android.talkback
 downloadFromFdroid com.reecedunn.espeak
 
+# Email
+# downloadFromFdroid com.fsck.k9 "Email"
+# downloadFromFdroid org.dystopia.email "Email"
+downloadFromFdroid eu.faircode.email "Email"
+# downloadFromFdroid org.sufficientlysecure.keychain
+
 # XScreensavers: org.jwz.xscreensaver
 # downloadFromFdroid org.jwz.xscreensaver
 
@@ -373,6 +380,14 @@ downloadFromRepo "$microg" "$microg_dir" com.android.vending "Google Play Store"
 
 echo -e "${LT_BLUE}# finishing up apps.mk${NC}"
 echo >> apps.mk
+echo -e '' >> apps.mk
+echo -e 'else' >> apps.mk
+echo -e 'PRODUCT_PACKAGES += \' >> apps.mk
+echo -e '	com.machiav3lli.fdroid' >> apps.mk
+echo -e '' >> apps.mk
+echo -e 'endif' >> apps.mk
+echo -e '' >> apps.mk
+
 
 echo -e "${YELLOW}# Cleaning up${NC}"
 rm -Rf tmp
