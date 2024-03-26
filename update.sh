@@ -385,6 +385,15 @@ echo -e 'else' >> apps.mk
 echo -e 'PRODUCT_PACKAGES += \' >> apps.mk
 echo -e '	com.machiav3lli.fdroid' >> apps.mk
 echo -e '' >> apps.mk
+echo -e 'ifeq ("$(USE_MINIMAL_FOSS_APPS_WITH_MICROG)","true")' >> apps.mk
+echo -e '' >> apps.mk
+echo -e 'PRODUCT_PACKAGES += \' >> apps.mk
+echo -e '	com.google.android.gms \' >> apps.mk
+echo -e '	com.google.android.gsf \' >> apps.mk
+echo -e '	com.google.android.vending' >> apps.mk
+echo -e '' >> apps.mk
+echo -e 'endif' >> apps.mk
+echo -e '' >> apps.mk
 echo -e 'endif' >> apps.mk
 echo -e '' >> apps.mk
 
