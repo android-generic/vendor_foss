@@ -381,6 +381,16 @@ downloadFromRepo "$microg" "$microg_dir" com.android.vending "Google Play Store"
 echo -e "${LT_BLUE}# finishing up apps.mk${NC}"
 echo >> apps.mk
 echo -e '' >> apps.mk
+echo -e '' >> apps.mk
+echo -e 'ifneq ("$(USE_CALYX_MICROG)","true")' >> apps.mk
+echo -e '' >> apps.mk
+echo -e 'PRODUCT_PACKAGES += \' >> apps.mk
+echo -e '	com.google.android.gms \' >> apps.mk
+echo -e '	com.google.android.gsf \' >> apps.mk
+echo -e '	com.google.android.vending' >> apps.mk
+echo -e '' >> apps.mk
+echo -e 'endif' >> apps.mk
+echo -e '' >> apps.mk
 echo -e 'else' >> apps.mk
 echo -e 'PRODUCT_PACKAGES += \' >> apps.mk
 echo -e '	com.machiav3lli.fdroid' >> apps.mk
@@ -396,7 +406,13 @@ echo -e 'endif' >> apps.mk
 echo -e '' >> apps.mk
 echo -e 'endif' >> apps.mk
 echo -e '' >> apps.mk
-
+echo -e 'ifeq ("$(USE_AURORA_STORE)","true")' >> apps.mk
+echo -e '' >> apps.mk
+echo -e 'PRODUCT_PACKAGES += \' >> apps.mk
+echo -e '	com.aurora.store ' >> apps.mk
+echo -e '' >> apps.mk
+echo -e 'endif' >> apps.mk
+echo -e '' >> apps.mk
 
 echo -e "${YELLOW}# Cleaning up${NC}"
 rm -Rf tmp
