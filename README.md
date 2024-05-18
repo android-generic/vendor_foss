@@ -55,5 +55,5 @@ Then add this inherit to your device tree:
 
 ### Notes
 
-- For microG, **Singature Spoofing is required**, If your builds don't have it yet look around  [microG repo](https://github.com/microg/GmsCore) for the Signature Spoofing patches. (`patches` dir or Pull Requests)
+- For microG, **Singature Spoofing is required**, If your builds don't have it yet look around  [microG repo](https://github.com/microg/patches) for the Signature Spoofing patches.
 - For Bromite SystemWebview, **please remember to add it into config_webview_packages.xml alongside with the signature**. You can visit [Bromite's Installing SystemWebView](https://github.com/bromite/bromite/wiki/Installing-SystemWebView) for more info.
