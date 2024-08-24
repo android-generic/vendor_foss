@@ -288,6 +288,7 @@ if [ "$MAIN_ARCH" == "arm64-v8a" ]; then
 fi
 
 #~ downloadFromRepo "$unofficial_mozilla" "$unofficial_mozilla_dir" org.mozilla.firefox "Browser2 QuickSearchBox Jelly"
+downloadFromFdroid de.marmaro.krt.ffupdater "Browser2 QuickSearchBox Jelly"
 #icecat 
 #~ downloadFromFdroid org.gnu.icecat "Browser2 QuickSearchBox"
 #Public transportation
