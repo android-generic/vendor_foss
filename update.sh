@@ -355,6 +355,7 @@ downloadFromFdroid org.fitchfamily.android.gsmlocation
 #Talkback
 downloadFromFdroid com.android.talkback
 downloadFromFdroid com.reecedunn.espeak
+downloadFromFdroid me.zhanghai.android.files
 
 # Email
 # downloadFromFdroid com.fsck.k9 "Email"
