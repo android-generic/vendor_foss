@@ -106,7 +106,7 @@ addCopy() {
 	addition=""
 	if [ "$native" != "" ]
 	then
-		unzip bin/$1 "lib/*"
+		unzip -o bin/$1 "lib/*"
 		if [ "$native" == "$MAIN_ARCH" ];then
 			addition="
 LOCAL_PREBUILT_JNI_LIBS := \\
