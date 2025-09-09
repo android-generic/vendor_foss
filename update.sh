@@ -280,11 +280,6 @@ echo -e "${YELLOW}# grabbing Arora and F-Droid Apps${NC}"
 #Web browser
 #~ downloadFromFdroid org.mozilla.fennec_fdroid "Browser2 QuickSearchBox Jelly"
 
-if [ "$2" == "bromite" ]; then
-#downloadFromRepo "$bromite" "$bromite_dir" org.bromite.bromite "Browser2 QuickSearchBox Jelly"
-downloadFromRepo "$bromite" "$bromite_dir" org.bromite.webview
-fi
-
 #~ downloadFromRepo "$unofficial_mozilla" "$unofficial_mozilla_dir" org.mozilla.firefox "Browser2 QuickSearchBox Jelly"
 downloadFromFdroid de.marmaro.krt.ffupdater "Browser2 QuickSearchBox Jelly"
 #icecat 
@@ -298,10 +293,6 @@ downloadFromFdroid de.marmaro.krt.ffupdater "Browser2 QuickSearchBox Jelly"
 #Pdf viewer
 #~ downloadFromFdroid com.artifex.mupdf.viewer.app
 
-# Aurora App Store
-# downloadFromFdroid com.aurora.store
-downloadFromRepo "$izzy" "$izzy_dir" com.aurora.store
-
 #Mail client
 #~ downloadFromFdroid com.fsck.k9 "Email"
 
@@ -313,8 +304,7 @@ downloadFromFdroid at.bitfire.davdroid
 # Droid-ify
 
 # Neo-Store
-# downloadFromFdroid com.machiav3lli.fdroid
-downloadFromRepo "$izzy" "$izzy_dir" com.machiav3lli.fdroid
+downloadFromFdroid com.machiav3lli.fdroid
 
 # F-Droid App Store
 #~ downloadFromFdroid org.fdroid.fdroid
@@ -324,6 +314,7 @@ downloadFromFdroid org.fdroid.fdroid.privileged
 #~ downloadFromFdroid com.kabouzeid.gramophone "Eleven"
 #LocalGsmNlpBackend
 downloadFromFdroid org.fitchfamily.android.gsmlocation
+
 # EtchDroid USB Writer
 #~ downloadFromFdroid eu.depau.etchdroid
 
@@ -373,10 +364,22 @@ downloadFromFdroid me.zhanghai.android.files
 # downloadFromFdroid com.fsck.k9 "Email"
 # downloadFromFdroid org.dystopia.email "Email"
 downloadFromFdroid eu.faircode.email "Email"
+
 # downloadFromFdroid org.sufficientlysecure.keychain
 
 # XScreensavers: org.jwz.xscreensaver
 # downloadFromFdroid org.jwz.xscreensaver
+
+# Aurora App Store
+# downloadFromFdroid com.aurora.store
+downloadFromRepo "$izzy" "$izzy_dir" com.aurora.store
+
+
+if [ "$2" == "bromite" ]; then
+#downloadFromRepo "$bromite" "$bromite_dir" org.bromite.bromite "Browser2 QuickSearchBox Jelly"
+downloadFromRepo "$bromite" "$bromite_dir" org.bromite.webview
+fi
+
 
 echo -e "${YELLOW}# grabbing MicroG Apps${NC}"
 downloadFromRepo "$microg" "$microg_dir" com.google.android.gms
