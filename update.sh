@@ -40,6 +40,9 @@ nanolx_dir="tmp/nanolx"
 newpipe="https://archive.newpipe.net/fdroid/repo/"
 newpipe_dir="tmp/newpipe"
 
+izzy="https://apt.izzysoft.de/fdroid/repo/"
+izzy_dir="tmp/izzy"
+
 # Device type selection	
 if [ "$1" == "" ]; then
 PS3='Which device type do you plan on building?: '
@@ -294,16 +297,25 @@ downloadFromFdroid de.marmaro.krt.ffupdater "Browser2 QuickSearchBox Jelly"
 #~ downloadFromFdroid net.osmand.plus
 #Pdf viewer
 #~ downloadFromFdroid com.artifex.mupdf.viewer.app
+
 # Aurora App Store
-downloadFromFdroid com.aurora.store
+# downloadFromFdroid com.aurora.store
+downloadFromRepo "$izzy" "$izzy_dir" com.aurora.store
+
 #Mail client
 #~ downloadFromFdroid com.fsck.k9 "Email"
+
 #Calendar/Contacts sync
 downloadFromFdroid at.bitfire.davdroid
+
 # Todo lists
 #~ downloadFromFdroid org.tasks
 # Droid-ify
-downloadFromFdroid com.machiav3lli.fdroid
+
+# Neo-Store
+# downloadFromFdroid com.machiav3lli.fdroid
+downloadFromRepo "$izzy" "$izzy_dir" com.machiav3lli.fdroid
+
 # F-Droid App Store
 #~ downloadFromFdroid org.fdroid.fdroid
 #fdroid extension
