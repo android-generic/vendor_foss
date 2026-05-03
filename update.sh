@@ -452,14 +452,13 @@ echo -e 'endif' >> apps.mk
 echo -e '' >> apps.mk
 echo -e '' >> apps.mk
 
-cat >> Android.mk <<EOF
-include $(CLEAR_VARS)
-# Find all Android.mk files in subfolders, excluding the current one
-SUB_MAKEFILES := $(shell find $(LOCAL_PATH) -maxdepth 2 -mindepth 2 -name Android.mk)
-
-include $(SUB_MAKEFILES)
-
-EOF
+echo -e '' >> Android.mk 
+echo -e 'include $(CLEAR_VARS)' >> Android.mk
+echo -e '# Find all Android.mk files in subfolders, excluding the current one' >> Android.mk
+echo -e 'SUB_MAKEFILES := $(shell find $(LOCAL_PATH) -maxdepth 2 -mindepth 2 -name Android.mk)' >> Android.mk
+echo -e '' >> Android.mk
+echo -e 'include $(SUB_MAKEFILES)' >> Android.mk
+echo -e '' >> Android.mk
 
 echo -e "${YELLOW}# Cleaning up${NC}"
 rm -Rf tmp
