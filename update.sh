@@ -132,14 +132,30 @@ include \$(CLEAR_VARS)
 LOCAL_MODULE := $2
 LOCAL_MODULE_TAGS := optional
 LOCAL_SRC_FILES := bin/$1
-LOCAL_MODULE_CLASS := APPS
+LOCAL_MODULE_CLASS := ETC
 LOCAL_CERTIFICATE := PRESIGNED
+LOCAL_DEX_PREOPT := false
+LOCAL_MODULE_RELATIVE_PATH := preinstall
 LOCAL_OVERRIDES_PACKAGES := $3
 $addition
 include \$(BUILD_PREBUILT)
 
 EOF
 echo -e "\t$2 \\" >> apps.mk
+}
+
+placeCopy() {
+	# File and name
+	fileToPlace="$1"
+	local_module="$2"
+	local_overrides="$3"
+	nameToPlace="$4"
+	# version codes are the 0-9 digits at the ens of the file name: com.android.vending-84022624.apk or com.android.talkback_370044210.apk
+	versionCode=$(echo "$fileToPlace" | cut -d'-' -f2 | cut -d'_' -f2 | cut -d'.' -f1)
+	echo "incoming args: fileToPlace=$fileToPlace, local_module=$local_module, local_overrides=$local_overrides, nameToPlace=$nameToPlace , versionCode=$versionCode"
+	# Place it
+	cp -r "bin/$fileToPlace" "$nameToPlace/$nameToPlace.apk"
+	echo -e $versionCode > "$nameToPlace/.version_code"
 }
 
 echo -e "${LT_BLUE}# Setting Up${NC}"
@@ -274,6 +290,27 @@ downloadFromRepo() {
 		addCopy "$apk" "$package" "$overrides"
 }
 
+downloadAndPlace() {
+		repo="$1"
+		repo_dir="$2"
+		package="$3"
+		overrides="$4" 
+		nameToPlace="$5"
+				
+		mkdir -p "$repo_dir"
+	if [ ! -f "$repo_dir"/index.xml ];then
+		downloadStuff "$repo"/index.jar "$repo_dir"/index.jar
+		unzip -po "$repo_dir"/index.jar index.xml > "$repo_dir"/index.xml
+	fi
+	
+		#~ marketvercode="$(xmlstarlet sel -t -m '//application[id="'"$package"'"]' -v ./marketvercode "$repo_dir"/index.xml || true)"
+		marketvercode="$(xmlstarlet sel -t -m '//application[id="'"$package"'"]' -v ./nativecode "$repo_dir"/index.xml || true)"
+		apk="$(xmlstarlet sel -t -m '//application[id="'"$package"'"]/package[versioncode="'"$marketvercode"'"]' -v ./apkname "$repo_dir"/index.xml || xmlstarlet sel -t -m '//application[id="'"$package"'"]/package[1]' -v ./apkname "$repo_dir"/index.xml)"
+		downloadStuff "$repo"/"$apk" bin/"$apk"
+
+		placeCopy "$apk" "$package" "$overrides" "$nameToPlace"
+}
+
 
 echo -e "${YELLOW}# grabbing Arora and F-Droid Apps${NC}"
 
@@ -281,7 +318,7 @@ echo -e "${YELLOW}# grabbing Arora and F-Droid Apps${NC}"
 #~ downloadFromFdroid org.mozilla.fennec_fdroid "Browser2 QuickSearchBox Jelly"
 
 #~ downloadFromRepo "$unofficial_mozilla" "$unofficial_mozilla_dir" org.mozilla.firefox "Browser2 QuickSearchBox Jelly"
-downloadFromFdroid de.marmaro.krt.ffupdater "Browser2 QuickSearchBox Jelly"
+# downloadFromFdroid de.marmaro.krt.ffupdater "Browser2 QuickSearchBox Jelly"
 #icecat 
 #~ downloadFromFdroid org.gnu.icecat "Browser2 QuickSearchBox"
 #Public transportation
@@ -304,12 +341,12 @@ downloadFromFdroid at.bitfire.davdroid
 # Droid-ify
 
 # Neo-Store
-downloadFromFdroid com.machiav3lli.fdroid
+# downloadFromFdroid com.machiav3lli.fdroid
 
 # F-Droid App Store
 #~ downloadFromFdroid org.fdroid.fdroid
 #fdroid extension
-downloadFromFdroid org.fdroid.fdroid.privileged
+# downloadFromFdroid org.fdroid.fdroid.privileged
 #Phonograph
 #~ downloadFromFdroid com.kabouzeid.gramophone "Eleven"
 #LocalGsmNlpBackend
@@ -358,12 +395,12 @@ downloadFromFdroid org.fitchfamily.android.gsmlocation
 #Talkback
 downloadFromFdroid com.android.talkback
 downloadFromFdroid com.reecedunn.espeak
-downloadFromFdroid me.zhanghai.android.files
+# downloadFromFdroid me.zhanghai.android.files
 
 # Email
 # downloadFromFdroid com.fsck.k9 "Email"
 # downloadFromFdroid org.dystopia.email "Email"
-downloadFromFdroid eu.faircode.email "Email"
+# downloadFromFdroid eu.faircode.email "Email"
 
 # downloadFromFdroid org.sufficientlysecure.keychain
 
@@ -372,20 +409,19 @@ downloadFromFdroid eu.faircode.email "Email"
 
 # Aurora App Store
 # downloadFromFdroid com.aurora.store
-downloadFromRepo "$izzy" "$izzy_dir" com.aurora.store
+# downloadFromRepo "$izzy" "$izzy_dir" com.aurora.store
 
 
-if [ "$2" == "bromite" ]; then
-#downloadFromRepo "$bromite" "$bromite_dir" org.bromite.bromite "Browser2 QuickSearchBox Jelly"
-downloadFromRepo "$bromite" "$bromite_dir" org.bromite.webview
-fi
+# if [ "$2" == "bromite" ]; then
+# downloadFromRepo "$bromite" "$bromite_dir" org.bromite.webview
+# fi
 
 
-echo -e "${YELLOW}# grabbing MicroG Apps${NC}"
-downloadFromRepo "$microg" "$microg_dir" com.google.android.gms
-downloadFromRepo "$microg" "$microg_dir" com.google.android.gsf
-downloadFromRepo "$microg" "$microg_dir" com.android.vending "Google Play Store"
-# downloadFromRepo "$microg" "$microg_dir" org.microg.gms.droidguard
+# echo -e "${YELLOW}# grabbing MicroG Apps${NC}"
+downloadAndPlace "$microg" "$microg_dir" com.google.android.gms "GmsCore" "GmsCore"
+downloadAndPlace "$microg" "$microg_dir" com.google.android.gsf "GSFProxy" "GsfProxy"
+downloadAndPlace "$microg" "$microg_dir" com.android.vending "Google Play Store" "FakeStore"
+# downloadAndPlace "$microg" "$microg_dir" org.microg.gms.droidguard
 
 #~ echo -e "${YELLOW}# grabbing NewPipe ${NC}"
 #~ downloadFromRepo "$newpipe" "$newpipe_dir" org.schabi.newpip
@@ -397,34 +433,33 @@ echo -e '' >> apps.mk
 echo -e 'ifneq ("$(USE_CALYX_MICROG)","true")' >> apps.mk
 echo -e '' >> apps.mk
 echo -e 'PRODUCT_PACKAGES += \' >> apps.mk
-echo -e '	com.google.android.gms \' >> apps.mk
-echo -e '	com.google.android.gsf \' >> apps.mk
-echo -e '	com.google.android.vending' >> apps.mk
+echo -e '	GmsCore \' >> apps.mk
+echo -e '	GsfProxy \' >> apps.mk
+echo -e '	FakeStore' >> apps.mk
 echo -e '' >> apps.mk
 echo -e 'endif' >> apps.mk
-echo -e '' >> apps.mk
-echo -e 'else' >> apps.mk
-echo -e 'PRODUCT_PACKAGES += \' >> apps.mk
-echo -e '	com.machiav3lli.fdroid' >> apps.mk
 echo -e '' >> apps.mk
 echo -e 'ifeq ("$(USE_MINIMAL_FOSS_APPS_WITH_MICROG)","true")' >> apps.mk
 echo -e '' >> apps.mk
 echo -e 'PRODUCT_PACKAGES += \' >> apps.mk
-echo -e '	com.google.android.gms \' >> apps.mk
-echo -e '	com.google.android.gsf \' >> apps.mk
-echo -e '	com.google.android.vending' >> apps.mk
+echo -e '	GmsCore \' >> apps.mk
+echo -e '	GsfProxy \' >> apps.mk
+echo -e '	FakeStore' >> apps.mk
 echo -e '' >> apps.mk
 echo -e 'endif' >> apps.mk
 echo -e '' >> apps.mk
 echo -e 'endif' >> apps.mk
 echo -e '' >> apps.mk
-echo -e 'ifeq ("$(USE_AURORA_STORE)","true")' >> apps.mk
 echo -e '' >> apps.mk
-echo -e 'PRODUCT_PACKAGES += \' >> apps.mk
-echo -e '	com.aurora.store ' >> apps.mk
-echo -e '' >> apps.mk
-echo -e 'endif' >> apps.mk
-echo -e '' >> apps.mk
+
+cat >> Android.mk <<EOF
+include $(CLEAR_VARS)
+# Find all Android.mk files in subfolders, excluding the current one
+SUB_MAKEFILES := $(shell find $(LOCAL_PATH) -maxdepth 2 -mindepth 2 -name Android.mk)
+
+include $(SUB_MAKEFILES)
+
+EOF
 
 echo -e "${YELLOW}# Cleaning up${NC}"
 rm -Rf tmp

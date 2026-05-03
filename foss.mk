@@ -1,8 +1,19 @@
 -include vendor/foss/apps.mk
+include $(wildcard $(call my-dir)/*/Android.mk)
+# include $(filter-out $(call my-dir)/Android.mk,$(shell find $(call my-dir)/ -type f -name Android.mk))
+
+$(call inherit-product-if-exists, vendor/foss/init-foss-permissions.mk)
+
+PRODUCT_PACKAGES += \
+	Provision
 
 PRODUCT_PACKAGES += \
 	FDroidPrivilegedExtension \
-	Provision
+	FakeStore \
+	GmsCore \
+	GsfProxy \
+	IchnaeaNlpBackend \
+	NominatimGeocoderBackend
 
 # Copy any Permissions files, overriding anything if needed
 $(foreach f,$(wildcard $(LOCAL_PATH)/permissions/*.xml),\
