@@ -9,9 +9,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
 	FDroidPrivilegedExtension \
-	FakeStore \
-	GmsCore \
-	GsfProxy \
 	IchnaeaNlpBackend \
 	NominatimGeocoderBackend
 
